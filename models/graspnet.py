@@ -16,7 +16,7 @@ sys.path.append(os.path.join(ROOT_DIR, 'pointnet2'))
 sys.path.append(os.path.join(ROOT_DIR, 'utils'))
 
 from backbone import Pointnet2Backbone
-from backbone_dgcnn import DGCNN
+from backbone_dgcnn import DGCNNBackbone
 from modules import ApproachNet, CloudCrop, OperationNet, ToleranceNet
 from loss import get_loss
 from loss_utils import GRASP_MAX_WIDTH, GRASP_MAX_TOLERANCE
@@ -26,7 +26,7 @@ from label_generation import process_grasp_labels, match_grasp_view_and_label, b
 class GraspNetStage1(nn.Module):
     def __init__(self, input_feature_dim=0, num_view=300):
         super().__init__()
-        self.backbone = DGCNN(input_feature_dim)
+        self.backbone = DGCNNBackbone(input_feature_dim)
         self.vpmodule = ApproachNet(num_view, 256)
 
     def forward(self, end_points):
