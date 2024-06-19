@@ -40,7 +40,7 @@ def get_graph_feature(x, k=20, idx=None):
     return feature
 
 class DGCNNBackbone(nn.Module):
-    def __init__(self, input_feature_dim=0, k=20, emb_dims=1024, dropout=0.5):
+    def __init__(self, input_feature_dim=0, k=20, emb_dims=256, dropout=0.5):
         super(DGCNNBackbone, self).__init__()
         self.k = k
         self.emb_dims = emb_dims
